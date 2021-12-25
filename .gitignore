@@ -3,3 +3,5 @@ Scripts/
 Lib/
 Include/
 pyvenv.cfg
+.idea
+frontend/node_modules
