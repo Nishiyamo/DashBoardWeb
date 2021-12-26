@@ -4,15 +4,17 @@ import sys
 
 app = Flask(__name__)
 api = Api(app)
-port = 5100
+port = 80
 
 if sys.argv.__len__() > 1:
     port = sys.argv[1]
 print("Api running on port : {} ".format(port))
 
+
 class topic_tags(Resource):
     def get(self):
         return {'hello': 'world world'}
+
 
 api.add_resource(topic_tags, '/')
 
