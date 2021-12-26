@@ -5,6 +5,8 @@ Include/
 pyvenv.cfg
 .idea
 package-lock.json
+etc
+share
 
 frontend/.DS_Store
 frontend/node_modules
