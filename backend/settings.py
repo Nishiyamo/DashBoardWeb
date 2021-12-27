@@ -1,3 +1,3 @@
 
-ROOT_FILE_DIRECTORY = 'offline_assets/'
+ROOT_FILE_DIRECTORY = 'E:\Windows\Escritorio\DashboardWebV1.0\offline_assets'
 

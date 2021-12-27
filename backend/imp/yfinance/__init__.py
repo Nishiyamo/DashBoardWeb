@@ -1,3 +1,4 @@
+import csv
 from datetime import datetime
 
 import yfinance as yf
@@ -17,4 +18,7 @@ class StockImporter:
         self.save_json_data(data)
 
     def save_json_data(self, data):
-        data.to_csv(ROOT_FILE_DIRECTORY + f'ticker_{self.index}.csv')
+        file = ROOT_FILE_DIRECTORY + f'/ticker_{self.index}.csv'
+        with open(file, 'w', encoding='UTF8') as f_csv:
+            csv.writer(f_csv)
+            data.to_csv(f_csv)
