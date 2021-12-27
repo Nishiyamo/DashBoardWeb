@@ -1,6 +1,8 @@
-from flask import Flask, request
-from flask_restful import Resource, Api
+from flask import Flask
+from flask_restful import Api
 import sys
+
+from backend.adapters.api.yfinance import YfinanceApi
 
 app = Flask(__name__)
 api = Api(app)
@@ -10,13 +12,7 @@ if sys.argv.__len__() > 1:
     port = sys.argv[1]
 print("Api running on port : {} ".format(port))
 
-
-class topic_tags(Resource):
-    def get(self):
-        return {'hello': 'world world'}
-
-
-api.add_resource(topic_tags, '/')
+api.add_resource(YfinanceApi, '/stock/<index>/<start_date>/<end_date>/')
 
 
 if __name__ == '__main__':
