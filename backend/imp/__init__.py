@@ -12,7 +12,7 @@ class BaseImporter:
         self.index = 'aapl'.upper() or index.upper()
         self.start_date = start_date or datetime(datetime.today().year, 1, 1).strftime("%Y-%m-%d")
         self.end_date = end_date or datetime.today().strftime("%Y-%m-%d")
-        self.file = ROOT_FILE_DIRECTORY + f'/ticker_{index}.csv'
+        self.file = ROOT_FILE_DIRECTORY + f'/ticker_{self.index}.csv'
 
     def _is_existing_ticket(self):
         return os.path.isfile(self.file)
