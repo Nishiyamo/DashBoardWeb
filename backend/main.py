@@ -12,7 +12,7 @@ if sys.argv.__len__() > 1:
     port = sys.argv[1]
 print("Api running on port : {} ".format(port))
 
-api.add_resource(YfinanceApi, '/print/<index>')
+api.add_resource(YfinanceApi, '/print/')
 
 
 if __name__ == '__main__':
