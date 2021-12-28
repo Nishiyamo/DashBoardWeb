@@ -7,7 +7,7 @@ pyvenv.cfg
 package-lock.json
 etc
 share
-
+__pycache__
 frontend/.DS_Store
 frontend/node_modules
 frontend/dist
