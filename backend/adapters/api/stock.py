@@ -18,4 +18,4 @@ class StockApi(Resource):
         start_date = params.get('start_date') or None
         end_date = params.get('end_date') or None
         stock = bi(index=index, start_date=start_date, end_date=end_date)
-        stock.status_manager_ticket()
+        return stock.status_manager_ticket()

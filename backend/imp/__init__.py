@@ -29,15 +29,13 @@ class BaseImporter:
     def status_manager_ticket(self):
         check_offline = self._is_existing_ticket()
         if check_offline:
-            print('offline')
             from backend.imp.local import LocalImporter
             offline = LocalImporter(self.index)
-            offline.print_data()
+            return offline.print_data()
         else:
-            print('online')
             from backend.imp.yfinance import StockImporter
             online = StockImporter(self.index)
             online.get_historic_data()
             from backend.imp.local import LocalImporter
-            offline = LocalImporter()
-            offline.print_data()
+            offline = LocalImporter(self.index)
+            return offline.print_data()
