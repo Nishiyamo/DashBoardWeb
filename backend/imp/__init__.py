@@ -22,3 +22,14 @@ class BaseImporter:
         last_line_date = ticket_data.tail(1)
         last_line_date = last_line_date['Date']
         return last_line_date < self.end_date
+
+    def status_manager_ticket(self):
+        check_offline = self._is_existing_ticket() and self._is_existing_ticket()
+        if check_offline:
+            from backend.imp.local import LocalImporter
+            offline = LocalImporter()
+            offline.get_data_info()
+        else:
+            from backend.imp.yfinance import StockImporter
+            online = StockImporter()
+            online.get_historic_data()

@@ -2,7 +2,7 @@ from flask import Flask
 from flask_restful import Api
 import sys
 
-from backend.adapters.api.yfinance import YfinanceApi
+from backend.adapters.api.stock import StockApi
 
 app = Flask(__name__)
 api = Api(app)
@@ -12,7 +12,7 @@ if sys.argv.__len__() > 1:
     port = sys.argv[1]
 print("Api running on port : {} ".format(port))
 
-api.add_resource(YfinanceApi, '/print/')
+api.add_resource(StockApi, '/print/')
 
 
 if __name__ == '__main__':
