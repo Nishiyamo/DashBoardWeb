@@ -1,6 +1,5 @@
 import csv
 from datetime import datetime
-import time
 
 from backend.settings import ROOT_FILE_DIRECTORY
 

@@ -1,4 +1,4 @@
-import csv
+import pandas as pd
 from datetime import datetime
 
 import yfinance as yf
@@ -15,10 +15,9 @@ class StockImporter:
 
     def get_historic_data(self):
         data = yf.download(self.index, start=self.start_date, end=self.end_date)
-        self.save_json_data(data)
+        self.save_csv_data(data)
 
-    def save_json_data(self, data):
+    def save_csv_data(self, data):
         file = ROOT_FILE_DIRECTORY + f'/ticker_{self.index}.csv'
         with open(file, 'w', encoding='UTF8') as f_csv:
-            csv.writer(f_csv)
             data.to_csv(f_csv)
