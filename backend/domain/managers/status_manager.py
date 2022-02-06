@@ -5,6 +5,9 @@ from backend.domain.managers import BaseManager
 
 class TicketStatusManager(BaseManager):
 
+    def __int__():
+        super().__init__()
+
     def _is_existing_ticket(self):
         return os.path.isfile(self.file)
 
