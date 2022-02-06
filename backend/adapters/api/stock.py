@@ -15,6 +15,7 @@ class StockApi(Resource):
     def get(self):
         params = request.args
         index = params.get('index')
+        print('prueba', index)
         start_date = params.get('start_date') or None
         end_date = params.get('end_date') or None
         stock = TSM(index=index, start_date=start_date, end_date=end_date)
