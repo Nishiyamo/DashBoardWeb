@@ -17,16 +17,20 @@ class TicketStatusManager(BaseManager):
             last_line_date = str(ticket_data.tail(1)['Date'].unique()[0])
             return last_line_date < self.end_date
 
-    def status_manager_ticket(self):
+    def _get_offline_data(self):
+        from backend.imp.local import LocalImporter
+        offline = LocalImporter(self.index)
+        return offline.print_data()
+
+    def _get_online_data(self):
+        from backend.imp.yfinance import StockImporter
+        online = StockImporter(self.index)
+        online.get_historic_data()
+
+    def status_manager(self):
         check_offline = self._is_updated_ticket()
         if check_offline:
-            from backend.imp.local import LocalImporter
-            offline = LocalImporter(self.index)
-            return offline.print_data()
+            self._get_offline_data()
         else:
-            from backend.imp.yfinance import StockImporter
-            online = StockImporter(self.index)
-            online.get_historic_data()
-            from backend.imp.local import LocalImporter
-            offline = LocalImporter(self.index)
-            return offline.print_data()
+           self._get_offline_data()
+           self._get_offline_data()
