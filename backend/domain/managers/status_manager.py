@@ -14,11 +14,8 @@ class TicketStatusManager(BaseManager):
     def _is_updated_ticket(self):
         if self._is_existing_ticket():
             ticket_data = pd.read_csv(self.file)
-            last_line_date = str(ticket_data.tail(1)['Date'])
-            if last_line_date < self.end_date:
-                return True
-            else:
-                return False
+            last_line_date = str(ticket_data.tail(1)['Date'].unique()[0])
+            return last_line_date < self.end_date
 
     def status_manager_ticket(self):
         check_offline = self._is_updated_ticket()
